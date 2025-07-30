@@ -1,8 +1,14 @@
+# api/index.py
+
 from flask import Flask
 from deep_translator import GoogleTranslator
-import json
+import requests
 import pandas as pd
-import 
+import sqlalchemy
+import json
+import country_converter as coco
+
+
 app = Flask(__name__)
 
 @app.route("/api/python")
