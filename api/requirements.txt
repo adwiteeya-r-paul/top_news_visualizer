@@ -1,5 +1,5 @@
-pip install flask
-pip install sqlalchemy
-pip install deep-translator
-pip install pycountry
-pip install country-converter
+flask
+sqlalchemy
+deep-translator
+pycountry
+country-converter
