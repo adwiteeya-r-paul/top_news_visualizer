@@ -3,3 +3,6 @@ sqlalchemy
 deep-translator
 pycountry
 country-converter
+dotenv
+langdetect
+nltk
