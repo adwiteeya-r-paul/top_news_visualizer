@@ -1,10 +1,6 @@
-from flask import Flask, jsonify, render_template
-import pandas as pd
-import time
-import os
-from dotenv import load_dotenv
-from backend.utils.youtube import youtube
-from backend.utils.geocode import get_geocode
+from flask import Flask
+from youtube import youtube
+from geocode import get_geocode
 
 
 app = Flask(__name__)
@@ -13,7 +9,6 @@ app = Flask(__name__)
 
 @app.route("/api/plot")
 def plot():
-    now = time.time()
     df = youtube()
     for row in df['Country']:
         df.loc[df['Country'] == row, 'Latitude'] = get_geocode(row)[0]

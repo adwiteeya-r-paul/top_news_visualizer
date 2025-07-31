@@ -23,7 +23,7 @@ async function initMap() {
 let data = [];
 
 function fetchdata(){
-    fetch("https://top-news-visualizer.onrender.com/api/plot")
+    fetch("/api/plot")
         .then ( res => res.json())
             .then ( json => {
                 data = json;
@@ -42,3 +42,4 @@ function updateUI(data){
     });
 }
 
+window.onload = initMap;
