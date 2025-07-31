@@ -2,6 +2,8 @@
 import pycountry
 from geopy.geocoders import GoogleV3
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 geolocator = GoogleV3(api_key=os.environ.get("API_KEY"))
 

@@ -3,6 +3,8 @@ from flask import Flask, send_from_directory, Response
 from youtube import youtube
 from geocode import get_geocode
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
