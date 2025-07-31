@@ -12,6 +12,8 @@ async function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 2,
         center: position,
+        gestureHandling: "none", // This prevents the user from panning or zooming with a mouse or touch gestures.
+        keyboardShortcuts: false,
     });
 
     button.addEventListener("click", function() {
