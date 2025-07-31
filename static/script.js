@@ -17,24 +17,21 @@ async function initMap() {
         disableDoubleClickZoom: true,
         fullscreenControl: false,
     });
-
-
-    new google.maps.Marker({
-    position: { lat: 36.6163, lng: -100.6 },
-    map,
-    label: {
-      text: "\ue530", // codepoint from https://fonts.google.com/icons
-      fontFamily: "Material Icons",
-      color: "#ffffff",
-      fontSize: "18px",
-    },
-    title: "Material Icon Font Marker",
-  });
 }
-    
-    button.addEventListener("click", function() {
-    });
 
+async function newmarker() {
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+        map: map,
+        position: { lat: 36.6163, lng: -100.6 },
+    });
+}
+
+async function buttonadd() {
+    button.addEventListener("click", function() {
+        fetchdata();
+    });
+}
 
 let data = [];
 
@@ -57,5 +54,7 @@ function updateUI(data){
     });
 }
 
-window.onload = initMap;
+window.onload = initMap
+window.onload = newmarker()
+window.onload = buttonadd()
 
