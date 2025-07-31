@@ -19,7 +19,11 @@ async function initMap() {
     });
 
 
-    fetchdata();
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+        map: map,
+        position: position,
+    });
+    
     button.addEventListener("click", function() {
         fetchdata();
     });
@@ -39,7 +43,7 @@ function fetchdata(){
 
 function updateUI(data){
     data.forEach(item => {
-        const marker = new AdvancedMarkerElement({
+        const marker = new google.maps.marker.AdvancedMarkerElement({
             map: map,
             position: { lat: item.Latitude, lng: item.Longitude },
         });
