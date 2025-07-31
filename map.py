@@ -6,6 +6,13 @@ from geocode import get_geocode
 app = Flask(__name__)
 
 
+@app.route("/")
+def serve_index():
+    return send_from_directory('static', 'index.html')
+
+@app.route("/<path:path>")
+def serve_static_file(path):
+    return send_from_directory('static', path)
 
 @app.route("/api/plot")
 def plot():
