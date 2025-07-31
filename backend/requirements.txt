@@ -8,4 +8,5 @@ langdetect
 nltk
 geopy
 gunicorn
+render_template
 flask-cors
