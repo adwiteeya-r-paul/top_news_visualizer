@@ -4,7 +4,7 @@ import time
 import os
 from dotenv import load_dotenv
 from flask_cors import CORS
-
+import render_template
 from utils.youtube import youtube
 from utils.geocode import get_geocode
 
@@ -15,7 +15,7 @@ CORS(app)
 @app.route("/")
 def index():
     api_key = os.getenv('API_KEY')
-    return jsonify(api_key=api_key)
+    return render_template('index.html', api_key=api_key)
 
 
 @app.route("/api/plot")
