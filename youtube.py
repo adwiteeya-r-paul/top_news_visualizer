@@ -34,7 +34,7 @@ def youtube():
         score = SentimentIntensityAnalyzer().polarity_scores(row)
         if score['compound'] > 0.5:
             df.loc[df['Title'] == row, 'Sentiment'] = 'Positive'
-        elif score['compound'] < 0.5:
+        elif score['compound'] <= 0.5:
             df.loc[df['Title'] == row, 'Sentiment'] = 'Negative'
 
     return df
