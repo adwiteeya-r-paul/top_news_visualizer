@@ -31,10 +31,9 @@ def youtube():
     sia = SentimentIntensityAnalyzer()
     data_for_df = []
 
-    countries_to_fetch = random.sample(countrylist, 5) # Reduce to 5 countries for faster debugging
-    print(f"Fetching data for {len(countries_to_fetch)} countries: {countries_to_fetch}")
 
-    for country in countries_to_fetch:
+
+    for country in countrylist:
         try:
             url = baseurl + country + "&videoCategoryId=25&key=" + os.environ.get("API_KEY")
             print(f"Fetching URL for {country}: {url}") # Log the URL (be careful not to expose API key in public logs)
