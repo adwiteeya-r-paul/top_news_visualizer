@@ -21,7 +21,7 @@ titledict = {}
 # For debugging, we'll keep it here, but be aware of potential performance impact.
 try:
     nltk.data.find('sentiment/vader_lexicon.zip')
-except LookupError: # Changed from nltk.downloader.DownloadError to LookupError
+except LookupError:
     print("NLTK vader_lexicon not found, attempting to download...")
     nltk.download('vader_lexicon')
     print("NLTK vader_lexicon downloaded.")
@@ -31,14 +31,16 @@ def youtube():
     sia = SentimentIntensityAnalyzer()
     data_for_df = []
 
+    # Changed to fetch data for 50 random countries
+    countries_to_fetch = random.sample(countrylist, 50)
+    print(f"Fetching data for {len(countries_to_fetch)} countries: {countries_to_fetch}")
 
-
-    for country in countrylist:
+    for country in countries_to_fetch:
         try:
             url = baseurl + country + "&videoCategoryId=25&key=" + os.environ.get("API_KEY")
-            print(f"Fetching URL for {country}: {url}") # Log the URL (be careful not to expose API key in public logs)
+            print(f"Fetching URL for {country}: {url}")
             response = requests.get(url)
-            response.raise_for_status() # Raise an HTTPError for bad responses (4xx or 5xx)
+            response.raise_for_status()
             json_response = response.json()
             print(f"Received response for {country}: {json_response}")
 
