@@ -2,6 +2,7 @@ from flask import Flask
 import pandas as pd
 import time
 import os
+import jsonify
 from dotenv import load_dotenv
 from flask import render_template
 
@@ -13,7 +14,8 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     api_key = os.getenv('API_KEY')
-    return render_template("index.html", api_key=api_key)
+    return jsonify(api_key=api_key)
+
 
 @app.route("/api/plot")
 def plot():
