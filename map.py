@@ -60,8 +60,6 @@ def plot():
                 except Exception as e:
                     print(f"map.py: Error geocoding {country_code}: {e}")
                     traceback.print_exc() # Print full traceback for geocoding errors
-                    # Decide how to handle geocoding failures: skip, use default, etc.
-                    # For now, we'll skip adding lat/lon if geocoding fails for a country
                     continue # Skip to next country if geocoding fails
 
             lat, lon = geocode_cache[country_code]
