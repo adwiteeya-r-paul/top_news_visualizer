@@ -7,7 +7,7 @@ from backend.utils.youtube import youtube
 from backend.utils.geocode import get_geocode
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 
 @app.route("/")
