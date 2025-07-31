@@ -18,12 +18,6 @@ async function initMap() {
         fullscreenControl: false,
     });
 
-    const tempMarker = new AdvancedMarkerElement({
-        map: map,
-        position: { lat: 39.8283, lng: -98.5795 }, // Center of the US
-        title: "Temporary Marker",
-    });
-
 
     fetchdata();
     button.addEventListener("click", function() {
