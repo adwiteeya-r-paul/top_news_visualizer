@@ -1,3 +1,4 @@
+flask
 sqlalchemy
 deep-translator
 pycountry
@@ -6,7 +7,4 @@ dotenv
 langdetect
 nltk
 geopy
-gunicorn==20.1.0
-Flask==2.0.2
-pandas==1.3.3
-nltk==3.6.3
+gunicorn
