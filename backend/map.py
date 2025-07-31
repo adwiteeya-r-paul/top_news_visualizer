@@ -8,7 +8,7 @@ from backend.utils.geocode import get_geocode
 
 
 app = Flask(__name__)
-CORS(app)
+
 
 @app.route("/")
 def index():
