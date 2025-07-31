@@ -1,10 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import pandas as pd
 import time
 import os
 from dotenv import load_dotenv
-from flask_cors import CORS
-import render_template
 from utils.youtube import youtube
 from utils.geocode import get_geocode
 
