@@ -10,12 +10,11 @@ async function initMap() {
     const button = document.getElementById("load-news");
 
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 2,
+        zoom: 3,
         center: position,
     });
 
     button.addEventListener("click", function() {
-        alert("Clicked!");
         fetchdata();
     });
 }
@@ -36,8 +35,7 @@ function updateUI(data){
     data.forEach(item => {
         const marker = new AdvancedMarkerElement({
             map: map,
-            position: { lat: item.lat, lng: item.lng },
-            title: item.title,
+            position: { lat: item.latitude, lng: item.longitude },
         });
     });
 }

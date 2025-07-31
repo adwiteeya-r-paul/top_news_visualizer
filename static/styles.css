@@ -4,21 +4,21 @@
 /* Reset some default styles */
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 body {
     font-family: "Times New Roman", serif;
-    background-color: #2756c4;
+    background-color: #ebedf2;
     color: #333;
 }
 
 h1, h2, h3 {
     text-align: center;
     font-weight: bold;
-    font-family: "Georgia", serif;
+    font-family: "Times New Roman", serif;
     color: #fff;
 }
 
@@ -48,15 +48,16 @@ h1, h2, h3 {
 p {
     line-height: 1.6;
     font-size: 1.1em;
-    text-align: justify;
+    text-align: center;
 }
 
 /* Button styles */
 
 button {
-    background-color: #4174f7;
-    color: rgb(218, 35, 242);
+    background-color: #03c12c;
+    color: rgb(8, 7, 8);
     border: none;
+    text-align: center;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
