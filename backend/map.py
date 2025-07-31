@@ -8,6 +8,7 @@ from flask import render_template
 
 from utils.youtube import youtube
 from utils.geocode import get_geocode
+import jsonify
 
 app = Flask(__name__)
 
