@@ -10,7 +10,7 @@ async function initMap() {
     const button = document.getElementById("load-news");
 
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 3,
+        zoom: 2,
         center: position,
     });
 
