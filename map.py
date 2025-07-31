@@ -3,8 +3,8 @@ from flask import Flask, send_from_directory, Response
 from youtube import youtube
 from geocode import get_geocode
 import os
-from dotenv import load_dotenv
-load_dotenv()
+import json # Import json for manual JSON response
+import traceback # Import traceback for detailed error logging
 
 app = Flask(__name__)
 
@@ -13,32 +13,62 @@ geocode_cache = {}
 
 @app.route("/")
 def serve_index():
+    print("Serving index.html...")
     return send_from_directory('static', 'index.html')
 
 @app.route("/<path:path>")
 def serve_static_file(path):
+    print(f"Serving static file: {path}")
     return send_from_directory('static', path)
 
 @app.route("/api-key.js")
 def serve_api_key():
+    print("Serving api-key.js...")
     api_key = os.environ.get("API_KEY")
     response_js = f"var API_KEY = '{api_key}';"
     return Response(response_js, mimetype='application/javascript')
 
 @app.route("/api/plot")
 def plot():
-    df = youtube()
-    for index, row in df.iterrows():
-        country_code = row['Country']
-        if country_code not in geocode_cache:
-            geocode_cache[country_code] = get_geocode(country_code)
-        
-        lat, lon = geocode_cache[country_code]
-        df.loc[index, 'Latitude'] = lat
-        df.loc[index, 'Longitude'] = lon
+    print("Received request for /api/plot")
+    try:
+        df = youtube()
+        print(f"youtube() function returned DataFrame with {len(df)} rows.")
 
-    return df.to_json(orient='records')
+        if df.empty:
+            print("DataFrame is empty, returning empty JSON.")
+            return json.dumps([]) # Return empty list if no data
+
+        for index, row in df.iterrows():
+            country_code = row['Country']
+            if country_code not in geocode_cache:
+                print(f"Geocoding country: {country_code}")
+                try:
+                    lat, lon = get_geocode(country_code)
+                    geocode_cache[country_code] = [lat, lon]
+                    print(f"Geocoded {country_code}: Lat={lat}, Lon={lon}")
+                except Exception as e:
+                    print(f"Error geocoding {country_code}: {e}")
+                    traceback.print_exc() # Print full traceback for geocoding errors
+                    # Decide how to handle geocoding failures: skip, use default, etc.
+                    # For now, we'll skip adding lat/lon if geocoding fails for a country
+                    continue # Skip to next country if geocoding fails
+
+            lat, lon = geocode_cache[country_code]
+            df.loc[index, 'Latitude'] = lat
+            df.loc[index, 'Longitude'] = lon
+
+        print("Finished processing data. Converting to JSON.")
+        return df.to_json(orient='records')
+
+    except Exception as e:
+        print(f"An error occurred in /api/plot: {e}")
+        traceback.print_exc() # Print full traceback for any error in plot()
+        # Return a 500 error with a JSON message for the client
+        error_message = {"error": "Internal Server Error", "details": str(e)}
+        return Response(json.dumps(error_message), status=500, mimetype='application/json')
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
+    print(f"Starting Flask app on port {port}...")
     app.run(host='0.0.0.0', port=port)
