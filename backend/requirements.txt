@@ -8,3 +8,4 @@ langdetect
 nltk
 geopy
 gunicorn
+flask_cors
