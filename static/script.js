@@ -14,6 +14,7 @@ async function initMap() {
         center: position,
         gestureHandling: "none", // This prevents the user from panning or zooming with a mouse or touch gestures.
         keyboardShortcuts: false,
+        disableDoubleClickZoom: true
     });
 
     button.addEventListener("click", function() {
@@ -37,7 +38,7 @@ function updateUI(data){
     data.forEach(item => {
         const marker = new AdvancedMarkerElement({
             map: map,
-            position: { lat: item.latitude, lng: item.longitude },
+            position: { lat: item.Latitude, lng: item.Longitude },
         });
     });
 }
