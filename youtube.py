@@ -32,7 +32,7 @@ def youtube():
     data_for_df = []
 
     # Changed to fetch data for 50 random countries
-    countries_to_fetch = random.sample(countrylist, 50)
+    countries_to_fetch = random.sample(countrylist, 20)
     print(f"Fetching data for {len(countries_to_fetch)} countries: {countries_to_fetch}")
 
     for country in countries_to_fetch:
