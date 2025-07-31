@@ -1,11 +1,14 @@
 /* script.js */
 
 let map;
+let AdvancedMarkerElement;
 
 async function initMap() {
     const position = { lat: 0, lng: 0 };
     const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    const markerLibrary = await google.maps.importLibrary("marker");
+    AdvancedMarkerElement = markerLibrary.AdvancedMarkerElement;
+    const PinElement = markerLibrary.PinElement;
     const button = document.getElementById("load-news");
 
     map = new google.maps.Map(document.getElementById("map"), {
@@ -15,20 +18,26 @@ async function initMap() {
         keyboardShortcuts: false,
         disableDoubleClickZoom: true,
         fullscreenControl: false,
+        mapId: "DEMO_MAP_ID"
     });
 
-    new google.maps.AdvancedMarkerElement({
+    // Create a PinElement with the custom glyph
+    const pin = new PinElement({
+        glyph: "\ue530",
+        glyphColor: "#ffffff",
+        background: "#4b8bf4", // You can customize the background color
+        borderColor: "#3a6fbd"  // You can customize the border color
+    });
+
+    // Create the marker using the PinElement
+    new AdvancedMarkerElement({
         position: { lat: 36.6163, lng: -100.6 },
-        map,
-        label: {
-            text: "\ue530",
-            fontFamily: "Material Icons",
-            color: "#ffffff",
-            fontSize: "18px",
-        },
+        map: map,
+        content: pin.element, // Use the PinElement's content
         title: "Material Icon Font Marker",
     });
 
+    // Ensure the fetch is called after map initialization
     fetchdata();
 }
 
@@ -49,7 +58,11 @@ function fetchdata() {
 }
 
 function updateUI(data) {
-    const { AdvancedMarkerElement } = google.maps;
+    if (!AdvancedMarkerElement) {
+        console.error("AdvancedMarkerElement not loaded yet.");
+        return;
+    }
+
     data.forEach(item => {
         const marker = new AdvancedMarkerElement({
             map: map,
