@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     api_key = os.getenv('API_KEY')
-    return render_template('index.html', api_key=api_key)
+    return render_template('templates/index.html', api_key=api_key)
 
 
 @app.route("/api/plot")
