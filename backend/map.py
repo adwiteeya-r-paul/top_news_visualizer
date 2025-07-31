@@ -2,7 +2,6 @@ from flask import Flask, jsonify
 import pandas as pd
 import time
 import os
-import jsonify
 from dotenv import load_dotenv
 from flask import render_template
 
