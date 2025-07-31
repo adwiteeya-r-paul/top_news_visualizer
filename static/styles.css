@@ -51,21 +51,4 @@ p {
     text-align: center;
 }
 
-/* Button styles */
-
-button {
-    background-color: #03c12c;
-    color: rgb(8, 7, 8);
-    border: none;
-    position: center;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-
-button:hover {
-    background-color: rgb(255, 13, 0);
-}
 

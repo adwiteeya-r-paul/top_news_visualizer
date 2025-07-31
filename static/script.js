@@ -17,7 +17,7 @@ async function initMap() {
         fullscreenControl: false,
     });
 
-    new google.maps.Marker({
+    new google.maps.AdvancedMarkerElement({
         position: { lat: 36.6163, lng: -100.6 },
         map,
         label: {
@@ -29,7 +29,7 @@ async function initMap() {
         title: "Material Icon Font Marker",
     });
 
-    button.addEventListener("click", fetchdata);
+    fetchdata();
 }
 
 let data = [];
