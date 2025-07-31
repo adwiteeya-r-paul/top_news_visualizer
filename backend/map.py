@@ -3,8 +3,8 @@ import pandas as pd
 import time
 import os
 from dotenv import load_dotenv
-from utils.youtube import youtube
-from utils.geocode import get_geocode
+from backend.utils.youtube import youtube
+from backend.utils.geocode import get_geocode
 
 
 app = Flask(__name__)
