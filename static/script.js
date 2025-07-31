@@ -19,6 +19,7 @@ async function initMap() {
     });
 
 
+    fetchdata();
     button.addEventListener("click", function() {
         fetchdata();
     });
