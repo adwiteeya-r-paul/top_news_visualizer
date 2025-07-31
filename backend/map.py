@@ -3,13 +3,14 @@ import pandas as pd
 import time
 import os
 from dotenv import load_dotenv
-from flask import render_template
+from flask_cors import CORS
 
 from utils.youtube import youtube
 from utils.geocode import get_geocode
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():
