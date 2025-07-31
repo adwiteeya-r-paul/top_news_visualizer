@@ -1,0 +1,70 @@
+
+/* styles.css */
+
+/* Reset some default styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Times New Roman", serif;
+    background-color: #2756c4;
+    color: #333;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    font-weight: bold;
+    font-family: "Georgia", serif;
+    color: #fff;
+}
+
+
+/* Layout styles */
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #1a1a1a;
+    color: #080606;
+}
+
+/* Typography styles */
+
+p {
+    line-height: 1.6;
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+/* Button styles */
+
+button {
+    background-color: #4174f7;
+    color: rgb(218, 35, 242);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+
+button:hover {
+    background-color: rgb(255, 13, 0);
+}
+
