@@ -19,7 +19,7 @@ nltk.download('vader_lexicon')
 def youtube():
     countries = random.sample(countrylist, 40)
     for country in countries:
-        url = baseurl + country + "&videoCategoryId=25&key=" + "AIzaSyBaoXhplpt8-FESvK6YxKJi1fUWlnJYYI8"
+        url = baseurl + country + "&videoCategoryId=25&key=" + "AIzaSyC-vtGc60bRI8XigEcCOuCJFLvKBYYqAf0"
         response = requests.get(url).json()
 
         # Check if 'items' exists and is not empty before trying to access it
