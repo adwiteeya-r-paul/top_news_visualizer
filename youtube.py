@@ -21,7 +21,7 @@ def youtube():
         url = baseurl + country + "&videoCategoryId=25&key=" + "AIzaSyBaoXhplpt8-FESvK6YxKJi1fUWlnJYYI8"
         response = requests.get(url).json()
         title = response['items'][0]['snippet']['title']
-        if langdetect.detect(title).lang != 'en':
+        if langdetect.detect(title) != 'en':
             translated = GoogleTranslator(source='auto', target='english').translate(text=title)
             titledict[country] = translated + "(Original title: " + title + ")"
         else:
