@@ -55,6 +55,6 @@ function updateUI(data){
 }
 
 window.onload = initMap
-window.onload = newmarker()
-window.onload = buttonadd()
+window.onload = newmarker
+window.onload = buttonadd
 
