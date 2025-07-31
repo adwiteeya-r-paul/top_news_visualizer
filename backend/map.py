@@ -10,11 +10,6 @@ from backend.utils.geocode import get_geocode
 app = Flask(__name__)
 
 
-@app.route("/")
-def index():
-    api_key = os.getenv('API_KEY')
-    return render_template('index.html', api_key=api_key)
-
 
 @app.route("/api/plot")
 def plot():

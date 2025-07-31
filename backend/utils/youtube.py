@@ -22,7 +22,7 @@ nltk.download('vader_lexicon')
 
 def youtube():
     for country in countries:
-        url = baseurl + country + "&videoCategoryId=25&key=" + google_api_key
+        url = baseurl + country + "&videoCategoryId=25&key=" + "AIzaSyBaoXhplpt8-FESvK6YxKJi1fUWlnJYYI8"
         response = requests.get(url).json()
         title = response['items'][0]['snippet']['title']
         if langdetect.detect(title).lang != 'en':

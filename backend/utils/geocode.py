@@ -7,7 +7,7 @@ import os
 
 load_dotenv()
 google_api_key = os.getenv('API_KEY')
-geolocator = GoogleV3(api_key=google_api_key)
+geolocator = GoogleV3(api_key="=AIzaSyBaoXhplpt8-FESvK6YxKJi1fUWlnJYYI8")
 
 def get_geocode(isocode):
     country = pycountry.countries.get(alpha_2=isocode)
