@@ -15,15 +15,9 @@ async function initMap() {
         gestureHandling: "none", // This prevents the user from panning or zooming with a mouse or touch gestures.
         keyboardShortcuts: false,
         disableDoubleClickZoom: true,
-        arrowControl: false,
-        zoomControl: false,
         fullscreenControl: false,
     });
 
-    marker = new AdvancedMarkerElement({
-        map: map,
-        position: position,
-    });
 
     button.addEventListener("click", function() {
         fetchdata();
