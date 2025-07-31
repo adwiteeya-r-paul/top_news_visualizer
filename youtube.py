@@ -21,7 +21,7 @@ titledict = {}
 # For debugging, we'll keep it here, but be aware of potential performance impact.
 try:
     nltk.data.find('sentiment/vader_lexicon.zip')
-except nltk.downloader.DownloadError:
+except LookupError: # Changed from nltk.downloader.DownloadError to LookupError
     print("NLTK vader_lexicon not found, attempting to download...")
     nltk.download('vader_lexicon')
     print("NLTK vader_lexicon downloaded.")
