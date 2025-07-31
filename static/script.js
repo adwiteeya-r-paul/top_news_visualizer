@@ -31,6 +31,7 @@ async function initMap() {
         title: "Material Icon Font Marker",
     });
 
+    
     // Add the event listener to call fetchdata() when the button is clicked
     button.addEventListener("click", fetchdata);
 }

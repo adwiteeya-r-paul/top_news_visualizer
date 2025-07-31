@@ -21,21 +21,25 @@ def youtube():
     for country in countries:
         url = baseurl + country + "&videoCategoryId=25&key=" + "AIzaSyBaoXhplpt8-FESvK6YxKJi1fUWlnJYYI8"
         response = requests.get(url).json()
-        title = response['items'][0]['snippet']['title']
-        if title != "":
-            translated = GoogleTranslator(source='auto', target='english').translate(text=title)
-            titledict[country] = translated + "(Original title: " + title + ")"
+
+        # Check if 'items' exists and is not empty before trying to access it
+        if 'items' in response and response['items']:
+            title = response['items'][0]['snippet']['title']
+            if title != "":
+                translated = GoogleTranslator(source='auto', target='english').translate(text=title)
+                titledict[country] = translated + "(Original title: " + title + ")"
 
 
     df = pd.DataFrame(list(titledict.items()),columns = ['Country','Title'])
 
 
-    for row in df['Title']:
-        score = SentimentIntensityAnalyzer().polarity_scores(row)
-        if score['compound'] > 0.5:
-            df.loc[df['Title'] == row, 'Sentiment'] = 'Positive'
-        elif score['compound'] <= 0.5:
-            df.loc[df['Title'] == row, 'Sentiment'] = 'Negative'
+    for index, row in df.iterrows():
+        score = SentimentIntensityAnalyzer().polarity_scores(row['Title'])
+        if score['compound'] >= 0.5:
+            df.loc[index, 'Sentiment'] = 'Positive'
+        elif score['compound'] <= -0.5:
+            df.loc[index, 'Sentiment'] = 'Negative'
+        else:
+            df.loc[index, 'Sentiment'] = 'Neutral'
 
     return df
-
