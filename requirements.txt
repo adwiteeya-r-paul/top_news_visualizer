@@ -4,7 +4,6 @@ deep-translator
 pycountry
 country-converter
 dotenv
-langdetect
 nltk
 geopy
 gunicorn

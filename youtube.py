@@ -7,7 +7,6 @@ import pandas as pd
 import sqlalchemy
 import json
 import country_converter as coco
-import langdetect
 import random 
 
 baseurl = f"https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=1&regionCode="
@@ -23,11 +22,10 @@ def youtube():
         url = baseurl + country + "&videoCategoryId=25&key=" + "AIzaSyBaoXhplpt8-FESvK6YxKJi1fUWlnJYYI8"
         response = requests.get(url).json()
         title = response['items'][0]['snippet']['title']
-        if langdetect.detect(title) != 'en':
+        if title != "":
             translated = GoogleTranslator(source='auto', target='english').translate(text=title)
             titledict[country] = translated + "(Original title: " + title + ")"
-        else:
-            titledict[country] = title
+
 
     df = pd.DataFrame(list(titledict.items()),columns = ['Country','Title'])
 
