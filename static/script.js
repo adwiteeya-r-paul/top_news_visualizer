@@ -19,15 +19,22 @@ async function initMap() {
     });
 
 
-    const marker = new google.maps.marker.AdvancedMarkerElement({
-        map: map,
-        position: position,
-    });
+    new google.maps.Marker({
+    position: { lat: 36.6163, lng: -100.6 },
+    map,
+    label: {
+      text: "\ue530", // codepoint from https://fonts.google.com/icons
+      fontFamily: "Material Icons",
+      color: "#ffffff",
+      fontSize: "18px",
+    },
+    title: "Material Icon Font Marker",
+  });
+}
     
     button.addEventListener("click", function() {
-        fetchdata();
     });
-}
+
 
 let data = [];
 
@@ -51,3 +58,4 @@ function updateUI(data){
 }
 
 window.onload = initMap;
+
