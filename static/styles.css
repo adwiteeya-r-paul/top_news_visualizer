@@ -19,7 +19,7 @@ h1, h2, h3 {
     text-align: center;
     font-weight: bold;
     font-family: "Times New Roman", serif;
-    color: #fff;
+    color: #1e1b1b;
 }
 
 
@@ -57,7 +57,7 @@ button {
     background-color: #03c12c;
     color: rgb(8, 7, 8);
     border: none;
-    text-align: center;
+    position: center;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
